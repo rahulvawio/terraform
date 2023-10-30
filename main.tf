@@ -1,17 +1,9 @@
 provider "aws" {
-  region     = "ap-northeast-1"
+  region     = "ap-south-1"
+
 }
-
-
-module "ec2_instance" {
-  source      = "./ec2-module"
-  instance_type = var.instances_type
-  ami = var.ami
-  subnet_id = var.subnet_id
-  }
-
-module "vpcs" {
-  source = "./Vpc-mod"
+resource "aws_instance" "sed" {
+  ami           = "ami-0c42696027a8ede58"
+  instance_type = "t2.micro"
+  subnet_id = "subnet-0b2f6ec9a2f9330e3"
 }
-
-
